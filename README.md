@@ -22,4 +22,4 @@ This PyQt application leverages the OpenAI language model and provides a conveni
     ```
 
 ### Overview
-![Video](https://img.youtube.com/vi/PsuWlNQVhzA/0.jpg)](https://www.youtube.com/watch?v=PsuWlNQVhzA)
+[![Video](https://img.youtube.com/vi/PsuWlNQVhzA/0.jpg)](https://www.youtube.com/watch?v=PsuWlNQVhzA)
