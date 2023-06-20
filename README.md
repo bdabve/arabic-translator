@@ -21,5 +21,5 @@ This PyQt application leverages the OpenAI language model and provides a conveni
     $ python translate_qt.py
     ```
 
-
-[![Video](https://img.youtube.com/vi/PsuWlNQVhzA/0.jpg)](https://www.youtube.com/watch?v=PsuWlNQVhzA)
+### Overview
+![Video](https://img.youtube.com/vi/PsuWlNQVhzA/0.jpg)](https://www.youtube.com/watch?v=PsuWlNQVhzA)
