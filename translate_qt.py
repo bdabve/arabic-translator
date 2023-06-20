@@ -10,7 +10,6 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-# from PyQt5.QtCore import Qt
 from h_interface import Ui_MainWindow
 from translator import translate
 
