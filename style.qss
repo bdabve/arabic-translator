@@ -5,12 +5,61 @@ QMainWindow {
 QLabel {
     color: #FFFFFF;
     font-family: Monaco;
-    font-size: 12px;
+    font-size: 14px;
     padding: 10px;
     height: 30px;
 }
 
+/* QComboBox EDIT */
+QComboBox {
+    font-family: Monaco;
+    background-color: #404040;
+    color: #FFFFFF;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    padding: 5px;
+    height: 30px;
+}
+
+QComboBox QAbstractItemView {
+    color: #ffffff;
+    background-color: #404040;
+    selection-background-color: #666666;
+    font-family: Monaco;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #555555;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 1px;
+    border-left-color: #999999;
+    border-left-style: solid;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #3C3C3C;
+    image: url("down_arrow.png");  /* Replace with your arrow icon image */
+}
+
+QComboBox::down-arrow {
+    image: none;  /* Hide the default arrow icon */
+}
+
 /* LINE EDIT */
+QTextEdit {
+    background-color: #404040;
+    color: #FFFFFF;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    padding: 8px;
+    height: 30px;
+    font-family: Monaco;
+}
+
 QLineEdit {
     background-color: #404040;
     color: #FFFFFF;

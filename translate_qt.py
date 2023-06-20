@@ -10,6 +10,7 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
+import qtawesome as qta
 from h_interface import Ui_MainWindow
 from translator import Translator
 
@@ -21,14 +22,11 @@ class MyApp(QMainWindow):
         # Load the .ui file
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.translator = Translator()
 
-        self.setWindowTitle("My Application")
-        self.setGeometry(200, 200, 400, 300)
+        self.setWindowTitle("AI Translator")
 
         # Connect the button click event
-
-        self.ui.input_field.returnPressed.connect(self.translate)
+        self.ui.search_button.setIcon(qta.icon('fa.send', color='#ffffff'))
         self.ui.search_button.clicked.connect(self.translate)
 
         # Set dark style sheet
@@ -37,8 +35,10 @@ class MyApp(QMainWindow):
         self.setStyleSheet(style_sheet)
 
     def translate(self):
-        search_text = self.ui.input_field.text()
-        translation_result = self.translator.translate(search_text)
+        search_text = self.ui.input_field.toPlainText()
+        translate_to = self.ui.comboBoxTranslateTo.currentText()
+        translator = Translator(translate_to)
+        translation_result = translator.translate(search_text)
         self.ui.list_widget.clear()
         if isinstance(translation_result, dict):
             for key, value in translation_result.items():
