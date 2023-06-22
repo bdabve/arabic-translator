@@ -9,7 +9,7 @@
 # ----------------------------------------------------------------------------
 
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel
 import qtawesome as qta
 from h_interface import Ui_MainWindow
 from translator import Translator
@@ -29,6 +29,9 @@ class MyApp(QMainWindow):
         self.ui.search_button.setIcon(qta.icon('fa.send', color='#ffffff'))
         self.ui.search_button.clicked.connect(self.translate)
 
+        # scroll layout
+        self.scroll_layout = QVBoxLayout(self.ui.scrollAreaWidgetContents)
+
         # Set dark style sheet
         with open('./style.qss', 'r') as f:
             style_sheet = f.read()
@@ -37,17 +40,14 @@ class MyApp(QMainWindow):
     def translate(self):
         search_text = self.ui.input_field.toPlainText()
         translate_to = self.ui.comboBoxTranslateTo.currentText()
+
+        # Translate
+        # NOTE: our chat does not track history
         translator = Translator(translate_to)
         translation_result = translator.translate(search_text)
-        self.ui.list_widget.clear()
-        if isinstance(translation_result, dict):
-            for key, value in translation_result.items():
-                self.ui.list_widget.addItem(f"{key}: {value}")
-        elif isinstance(translation_result, list):
-            for line in translation_result:
-                self.ui.errorLabel.setText(f'{line}')
-        else:
-            self.ui.list_widget.addItem(str(translation_result))
+
+        label = QLabel(translation_result)
+        self.scroll_layout.addWidget(label)
 
 
 if __name__ == "__main__":

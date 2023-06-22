@@ -36,14 +36,14 @@ Language Identification: Your first task is to accurately identify the language 
 Grammar and Spelling Check: Perform a comprehensive check for grammar and spelling errors in the provided text.
 Correction: If any grammar or spelling errors are found, suggest the corrected version of the sentence to ensure accuracy.
 Translation: Translate the corrected sentence from the identified source language to the desired target language {translate_to}.
-Please format your responses as a Python dictionary with the following structure:
-{{
-    'Source': 'Language identification',
-    'Grammar Spelling': 'Grammar and spell check error with correction',
-    Correction: 'Corrected sentence',
-    'Translation': 'Translation of the corrected sentence to Arabic',
-    'Note': 'If you have any additional notes'
-}}
+Please format your responses with the following structure:
+
+Source: Language identification,
+Grammar Spelling: Grammar and spell check error with correction,
+Correction: Corrected sentence,
+Translation: Translation of the corrected sentence to Arabic,
+Note: If you have any additional notes
+
 Your output should adhere to this format, providing the relevant information for each step of the language-related tasks.
         """
         self.translate_history = [
@@ -65,22 +65,10 @@ Your output should adhere to this format, providing the relevant information for
         self.translate_history.append({'role': 'user', 'content': f"{question}"})
         response = self.get_completion_from_messages(self.translate_history)
         self.translate_history.append({'role': 'assistant', 'content': f'{response}'})
-        trans_result = self.parse_translation_response(response)
-        return trans_result
+        return response
 
-    def parse_translation_response(self, response):
-        lines = response.strip().split("\n")
-        try:
-            translation_result = {
-                'source': lines[1].split(": ")[1],
-                'grammar_spell_check': lines[2].split(": ")[1],
-                'corrected_sentence': lines[3].split(": ")[1],
-                'translation': lines[4].split(": ")[1]
-            }
-
-            return translation_result
-        except IndexError:
-            return lines
+    def history(self):
+        return self.translate_history
 
 
 if __name__ == '__main__':

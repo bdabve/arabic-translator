@@ -2,12 +2,19 @@ QMainWindow {
     background-color: #2C2C2C;
 }
 
+QWidget {
+    background-color: #2C2C2C;
+}
+
 QLabel {
-    color: #FFFFFF;
     font-family: Monaco;
     font-size: 14px;
+    color: #FFFFFF;
+    background-color: #404040;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    padding: 8px;
     padding: 10px;
-    height: 30px;
 }
 
 /* QComboBox EDIT */
